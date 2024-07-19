@@ -1,0 +1,37 @@
+{% extends 'main.html' %}
+
+{% block title %}
+{{ title }}
+{% endblock %}
+
+{% block content %}
+
+        <form method="post" action="/login" class="register">
+            {{ form.csrf_token }}
+
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    {% for category, message in messages %}
+                        <div class="{{category}}">
+                            <p>{{message}}</p>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+
+            {% for field in form if field.name != 'csrf_token' %}
+                <p>
+                    {{ field.label }}
+                    {{ field }}
+                </p>
+                    {% if field.errors %}
+                        {% for error in field.errors %}
+                           <p class="error"> {{ error }} </p>
+                        {% endfor %}
+                    {% endif %}
+            {% endfor %}
+            <input type="submit" placeholder="войти">
+        </form>
+
+
+{% endblock %}

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <title>{% block title %}
+            {{title}}
+        {% endblock %}
+    </title>
+</head>
+
+<body>
+<header>
+    <nav>
+        <ul>
+            <li><a href="/">Главная</a></li>
+            <li><a href="/about">Абоут</a></li>
+            <li><a href="/news">Новости</a></li>
+            <li><a href="/clothes/">Одежда</a></li>
+        </ul>
+    </nav>
+</header>
+
+
+<div>{% block content %}
+    {{content}}
+    {% endblock %}
+
+</div>
+
+<footer>
+    <p>Разработано с любовью &copy;Wave</p>
+</footer>
+</body>
+
+</html>
